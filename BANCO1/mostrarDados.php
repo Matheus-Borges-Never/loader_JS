@@ -6,6 +6,8 @@
     $SENHA      = '@Luno123';
     $BANCO      = 'TI41';
 
+    $PRODUTO = $_POST['produto'];
+
     $con = new mysqli ($SERVIDOR,$USUARIO,$SENHA,$BANCO);
 
     If ( $con->connect_error){
@@ -14,7 +16,7 @@
     }else{
         echo "<h3>A conexão com o banco de dados foi realizado</h3>";
 
-        $sql = "select * from clientes";
+        $sql = "select * from clientes where clientes like'$PRODUTO%'";
         $ret = $con -> query($sql);
 
         while ($registro = $ret -> fetch_assoc()){
